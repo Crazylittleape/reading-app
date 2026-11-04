@@ -1,0 +1,6 @@
+*
+!Dockerfile
+!apache.conf
+!php.ini
+!scripts/
+!scripts/container-entrypoint.sh

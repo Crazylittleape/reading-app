@@ -1,0 +1,2 @@
+const path = require('path')
+module.exports = { parser: require('postcss-comment'), plugins: [require('postcss-import')({resolve(id, basedir) { if (id.startsWith('~@/')) return path.resolve(__dirname, id.slice(3)); if (id.startsWith('@/')) return path.resolve(__dirname, id.slice(2)); if (id.startsWith('~')) return require.resolve(id.slice(1), { paths: [basedir] }); return id }}), require('@dcloudio/vue-cli-plugin-uni/packages/postcss')] }

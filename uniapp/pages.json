@@ -1,0 +1,406 @@
+{
+	"easycom": {
+		"autoscan": true,
+		"custom": {
+			"^u--(.*)": "@/uni_modules/uview-ui/components/u--$1/u--$1.vue",
+			"^u-(.*)": "@/uni_modules/uview-ui/components/u-$1/u-$1.vue"
+		}
+	},
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/books/index",
+			"style": {
+				"navigationBarTitleText": "书库",
+				"navigationBarBackgroundColor": "#ffffff",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/books/detail",
+			"style": {
+				"navigationBarTitleText": "书籍详情",
+				"navigationBarBackgroundColor": "#ffffff"
+			}
+		},
+		{
+			"path": "pages/books/read",
+			"style": {
+				"navigationBarTitleText": "阅读",
+				"navigationBarBackgroundColor": "#fff9f0",
+				"backgroundColor": "#fff9f0"
+			}
+		},
+		{
+			"path": "pages/index/index",
+			"style": {
+				// "enablePullDownRefresh": true,
+				"navigationStyle": "custom" ,// 隐藏系统导航栏
+				"navigationBarTextStyle": "black" ,// 状态栏字体为黑色，只能为 white-白色，black-黑色 二选一
+				"app-plus" : {
+					"bounce" : "none" // 取消APP端iOS回弹,避免与下拉刷新冲突 (可统一配在 'globalStyle')
+				}
+			}
+		}
+	    ,{
+            "path" : "pages/ucenter/ucenter",
+            "style" :                                                                                    
+            {
+                // "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"navigationStyle": "custom" ,// 隐藏系统导航栏
+				"navigationBarTextStyle": "black" ,// 状态栏字体为黑色，只能为 white-白色，black-黑色 二选一
+				"app-plus" : {
+					"bounce" : "none" // 取消APP端iOS回弹,避免与下拉刷新冲突 (可统一配在 'globalStyle')
+				}
+            }
+            
+        }
+        ,{
+            "path" : "pages/ranking/ranking",
+            "style" :                                                                                    
+            {
+				"navigationBarBackgroundColor": "#ffffff",
+				"backgroundColor": "#ffffff",
+                "navigationBarTitleText": "排行榜",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/bookshelf/bookshelf",
+            "style" :                                                                                    
+            {
+				"navigationBarTitleText": "书架",
+                "enablePullDownRefresh": true,
+				"transparentTitle": "auto",
+				"navigationBarBackgroundColor": "#ffffff",
+				"backgroundColor": "#ffffff"
+                // "navigationStyle": "custom" ,// 隐藏系统导航栏
+                // "navigationBarTextStyle": "black" // 状态栏字体为黑色，只能为 white-白色，black-黑色 二选一
+            }
+            
+        }
+        ,{
+            "path" : "pages/read/read",
+            "style" :                                                                                    
+            {
+				"navigationBarBackgroundColor": "#ffffff",
+				"backgroundColor": "#ffffff",
+                "navigationBarTitleText": "",
+				"navigationStyle": "custom" ,// 隐藏系统导航栏
+				"navigationBarTextStyle": "black" ,// 状态栏字体为黑色，只能为 white-白色，black-黑色 二选一
+				"app-plus" : {
+					"bounce" : "none" // 取消APP端iOS回弹,避免与下拉刷新冲突 (可统一配在 'globalStyle')
+				}
+            }
+            
+        }
+        ,{
+            "path" : "pages/class/class",
+            "style" :                                                                                    
+            {
+                "navigationBarBackgroundColor": "#ffffff",
+                "backgroundColor": "#ffffff",
+                "navigationBarTitleText": "书库",
+                "enablePullDownRefresh": false,
+				"navigationStyle": "custom" ,// 隐藏系统导航栏
+				"navigationBarTextStyle": "black" ,// 状态栏字体为黑色，只能为 white-白色，black-黑色 二选一
+				"app-plus" : {
+					"bounce" : "none" // 取消APP端iOS回弹,避免与下拉刷新冲突 (可统一配在 'globalStyle')
+				}
+            }
+            
+        }
+		,{
+		    "path" : "pages/newest/newest",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarBackgroundColor": "#ffffff",
+		        "backgroundColor": "#ffffff",
+		        "navigationBarTitleText": "最近更新",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		}
+        ,{
+            "path" : "pages/search/search",
+            "style" :                                                                                    
+            {
+				"navigationBarBackgroundColor": "#ffffff",
+				"backgroundColor": "#ffffff",
+                "navigationBarTitleText": "搜索页",
+                "enablePullDownRefresh": false
+            }
+            
+        },
+		{
+		    "path": "pages/login/login",
+		    "style": {
+				"navigationBarBackgroundColor": "#ffffff",
+				"backgroundColor": "#ffffff",
+				"navigationBarTitleText": ""
+			}
+		}, {
+		    "path": "pages/login/forget",
+		    "style": {
+				"navigationBarBackgroundColor": "#ffffff",
+				"backgroundColor": "#ffffff",
+				"navigationBarTitleText": ""
+			}
+		}, {
+		    "path": "pages/login/register",
+		    "style": {
+				"navigationBarBackgroundColor": "#ffffff",
+				"backgroundColor": "#ffffff",
+				"navigationBarTitleText": "",
+				"navigationStyle": "custom" ,// 隐藏系统导航栏
+				"navigationBarTextStyle": "black" // 状态栏字体为黑色，只能为 white-白色，black-黑色 二选一
+			}
+		}
+        ,{
+            "path" : "pages/detail/detail",
+            "style" :                                                                                    
+            {
+                // "navigationBarTitleText": "漫画详情",
+                // "enablePullDownRefresh": false,
+                // "transparentTitle": "auto",
+                "navigationBarBackgroundColor": "#ffffff",
+                // "backgroundColor": "#ffffff"
+				"navigationStyle": "custom" ,// 隐藏系统导航栏
+				"navigationBarTextStyle": "white" ,// 状态栏字体为黑色，只能为 white-白色，black-黑色 二选一
+				"app-plus" : {
+					"bounce" : "none" ,// 取消APP端iOS回弹,避免与下拉刷新冲突 (可统一配在 'globalStyle')
+					"softinputMode": "adjustResize" // 软键盘弹出时，webview窗体高度挤压。屏幕高度=webview窗体高度+软键盘高度
+				}
+            }
+            
+        }
+        ,{
+            "path" : "pages/ucenter/history/history",
+            "style" :                                                                                    
+            {
+                "navigationBarBackgroundColor": "#ffffff",
+                "backgroundColor": "#ffffff",
+                "navigationBarTitleText": "阅读历史",
+                "enablePullDownRefresh": true
+            }
+            
+        }
+        ,{
+            "path" : "pages/ucenter/setting/setting",
+            "style" :                                                                                    
+            {
+				"navigationBarBackgroundColor": "#ffffff",
+                "navigationBarTitleText": "账号设置",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/ucenter/comment/comment",
+            "style" :                                                                                    
+            {
+                "navigationBarBackgroundColor": "#ffffff",
+                "backgroundColor": "#ffffff",
+                "navigationBarTitleText": "我的评论",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/ucenter/about/about",
+            "style" :                                                                                    
+            {
+				"navigationBarBackgroundColor": "#ffffff",
+				"backgroundColor": "#ffffff",
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/webview/webview",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"app-plus": {  
+				    "titleNView": {  
+				        "buttons": [  
+				            { 
+				                "float": "left",
+								"type":"close"
+				            }
+				        ]
+				    }  
+				} 
+            }
+            
+        }
+        ,{
+            "path" : "pages/detail/chapter/chapter",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/ucenter/vip/vip",
+            "style" :                                                                                    
+            {
+				"navigationBarBackgroundColor": "#ffffff",
+                "navigationBarTitleText": "会员中心",
+				"navigationStyle": "custom" ,// 隐藏系统导航栏
+				"navigationBarTextStyle": "white" ,// 状态栏字体为黑色，只能为 white-白色，black-黑色 二选一
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/ucenter/coin/coin",
+            "style" :                                                                                    
+            {
+				"navigationBarBackgroundColor": "#ffffff",
+                "navigationBarTitleText": "充值金币",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/ucenter/ticket/ticket",
+            "style" :                                                                                    
+            {
+				"navigationBarBackgroundColor": "#ffffff",
+                "navigationBarTitleText": "充值月票",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/ucenter/vip/pay/pay",
+            "style" :                                                                                    
+            {
+				"navigationBarBackgroundColor": "#ffffff",
+                "navigationBarTitleText": "收银台",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/ucenter/record/task",
+            "style" :                                                                                    
+            {
+				"navigationBarBackgroundColor": "#ffffff",
+                "navigationBarTitleText": "任务奖励",
+                "enablePullDownRefresh": false,
+				"app-plus": { 
+                    "titleNView": { 
+                        "splitLine": { 
+                            "color": "#EEEEEE"
+                        }
+                    }
+                }
+            }
+            
+        }
+        ,{
+            "path" : "pages/ucenter/record/consume",
+            "style" :                                                                                    
+            {
+				"navigationBarBackgroundColor": "#ffffff",
+                "navigationBarTitleText": "消费明细",
+                "enablePullDownRefresh": false,
+				"app-plus": {
+				    "titleNView": { 
+				        "splitLine": { 
+				            "color": "#EEEEEE"
+				        }
+				    }
+				}
+            }
+            
+        }
+        ,{
+            "path" : "pages/ucenter/record/order",
+            "style" :                                                                                    
+            {
+				"navigationBarBackgroundColor": "#ffffff",
+                "navigationBarTitleText": "订单记录",
+                "enablePullDownRefresh": false,
+				"app-plus": {
+				    "titleNView": { 
+				        "splitLine": { 
+				            "color": "#EEEEEE"
+				        }
+				    }
+				}
+            }
+            
+        }
+        ,{
+            "path" : "pages/ucenter/uinfo/uinfo",
+            "style" :                                                                                    
+            {
+				"navigationBarBackgroundColor": "#ffffff",
+                "navigationBarTitleText": "个人信息",
+                "enablePullDownRefresh": false,
+				"app-plus": {
+				    "titleNView": { 
+				        "splitLine": { 
+				            "color": "#EEEEEE"
+				        }
+				    }
+				}
+            }
+            
+        }
+        ,{
+            "path" : "pages/ucenter/task/task",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"navigationStyle": "custom" ,// 隐藏系统导航栏
+				"navigationBarTextStyle": "white" // 状态栏字体为黑色，只能为 white-白色，black-黑色 二选一
+            }
+            
+        }
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	}
+	// #ifndef H5
+	,"tabBar":{
+		"color": "#7A7E83",
+		"selectedColor": "#ff5500",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+		    "pagePath": "pages/books/index",
+		    "iconPath": "static/tabbar/mkz_ic_tab_home_unselected.png",
+		    "selectedIconPath": "static/tabbar/mkz_ic_tab_home_selected.png",
+		    "text": "首页"
+		}, {
+		    "pagePath": "pages/class/class",
+		    "iconPath": "static/tabbar/mkz_ic_tab_category_unselected.png",
+		    "selectedIconPath": "static/tabbar/mkz_ic_tab_category_selected.png",
+		    "text": "分类"
+		}, {
+		    "pagePath": "pages/bookshelf/bookshelf",
+		    "iconPath": "static/tabbar/mkz_ic_tab_bookshelf_unselected.png",
+		    "selectedIconPath": "static/tabbar/mkz_ic_tab_bookshelf_selected.png",
+		    "text": "书架"
+		}, {
+		    "pagePath": "pages/ucenter/ucenter",
+		    "iconPath": "static/tabbar/mkz_ic_tab_mine_unselected.png",
+		    "selectedIconPath": "static/tabbar/mkz_ic_tab_mine_selected.png",
+		    "text": "我的"
+		}]
+	}
+	// #endif
+}

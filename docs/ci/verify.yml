@@ -1,0 +1,27 @@
+name: Verify repository
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  source-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: uniapp/package-lock.json
+      - name: Reject private files and inline deployment credentials
+        run: python3 scripts/check_repository.py
+      - name: Verify local configuration generation
+        run: python3 -m unittest discover -s tests -v
+      - name: Generate disposable local configuration
+        run: python3 scripts/bootstrap.py
+      - name: Build H5 from the lockfile
+        run: python3 scripts/build_h5.py --install
+      - name: Validate Compose configuration
+        run: docker compose config --quiet

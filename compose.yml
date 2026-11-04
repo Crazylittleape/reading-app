@@ -1,0 +1,92 @@
+name: reading-app-dev
+services:
+  db:
+    image: mysql:5.7
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --max-connections=40
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: reading_app
+      MYSQL_USER: reader
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?Run python3 scripts/bootstrap.py first}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Run python3 scripts/bootstrap.py first}
+    volumes:
+      - reading-db:/var/lib/mysql
+      - ./db-init:/docker-entrypoint-initdb.d:ro
+    networks: [reading-private]
+    healthcheck:
+      test: [CMD-SHELL, 'mysqladmin ping -h localhost -uroot -p"$$MYSQL_ROOT_PASSWORD" --silent']
+      interval: 10s
+      timeout: 5s
+      retries: 12
+    mem_limit: 512m
+    pids_limit: 150
+  web:
+    build: .
+    image: reading-app-dev-php:local
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      APP_URL: ${APP_URL:-http://localhost:18087}
+      APP_NAME: ${APP_NAME:-Reading Library}
+      MYSQL_HOST: db
+      MYSQL_DATABASE: reading_app
+      MYSQL_USER: reader
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?Run python3 scripts/bootstrap.py first}
+      APP_API_KEY: ${APP_API_KEY:?Run python3 scripts/bootstrap.py first}
+      APP_ENCRYPTION_KEY: ${APP_ENCRYPTION_KEY:?Run python3 scripts/bootstrap.py first}
+      APP_BOOK_KEY: ${APP_BOOK_KEY:?Run python3 scripts/bootstrap.py first}
+      ADMIN_CODE: ${ADMIN_CODE:?Run python3 scripts/bootstrap.py first}
+    volumes:
+      - ./site:/var/www/html:ro
+      - reading-cache:/var/www/html/caches:rw
+      - reading-uploads:/var/www/html/attachment:rw
+    networks: [reading-private]
+    read_only: true
+    tmpfs:
+      - /tmp:size=64m,mode=1777
+      - /var/run/apache2:size=4m
+      - /var/lock/apache2:size=4m
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+    cap_add: [SETUID, SETGID, CHOWN]
+    healthcheck:
+      test: [CMD, curl, --fail, --silent, http://127.0.0.1:8080/healthz.json]
+      interval: 20s
+      timeout: 5s
+      retries: 3
+    mem_limit: 256m
+    pids_limit: 100
+  gateway:
+    image: nginx:stable-alpine
+    restart: unless-stopped
+    depends_on:
+      web:
+        condition: service_healthy
+    ports:
+      - "${BIND_ADDRESS:-127.0.0.1}:${HTTP_PORT:-18087}:8080"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    networks: [reading-private, reading-front]
+    read_only: true
+    tmpfs:
+      - /var/cache/nginx:size=16m
+      - /var/run:size=4m
+      - /tmp:size=16m
+    security_opt: [no-new-privileges:true]
+    mem_limit: 64m
+    pids_limit: 50
+    healthcheck:
+      test: [CMD, wget, -q, -O, /dev/null, http://127.0.0.1:8080/healthz.json]
+      interval: 20s
+      timeout: 5s
+      retries: 3
+volumes:
+  reading-db:
+  reading-cache:
+  reading-uploads:
+networks:
+  reading-private:
+    internal: true
+  reading-front:
