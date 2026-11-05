@@ -92,6 +92,8 @@ PHP 与数据库位于内部容器网络，数据库没有宿主机公开端口�
 | 列表与目录 | `uniapp/pages/books/index.vue`、`detail.vue` |
 | 请求与图片处理 | `uniapp/common/book-api.js` |
 | 阅读 API | `site/sys/apps/controllers/appv1/Book.php` |
+
+阅读页的白色、暖黄、护眼绿和黑色主题共用当前设备的 `reading-theme` 设置；未设置或值无效时使用暖黄。字号使用 `reading-font-size`，阅读进度仍按书籍分别存储。主题同步应用于正文、导航栏、按钮和目录，不改变书内图片颜色。
 | 后台书籍 / 章节操作 | `site/sys/apps/controllers/admin/Book.php` |
 | 后台菜单 | `site/sys/libs/nav.php` |
 | 分表与正文路径 | `site/sys/apps/helpers/common_helper.php` |
