@@ -32,6 +32,11 @@ return array (
         'init' => 0,
       ),
       array (
+        'name' => 'EPUB导入',
+        'url' => 'import/index,import/upload,import/preview,import/status,import/section,import/image,import/save,import/delete,import/cleanup',
+        'init' => 1,
+      ),
+      array (
         'name' => '分类列表',
         'url' => 'book/lists',
         'init' => 1,
